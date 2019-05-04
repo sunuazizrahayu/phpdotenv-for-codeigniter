@@ -1,7 +1,10 @@
 # PHP DotEnv for CodeIgniter
-> Autodetect environment type and load variables from `.env` to `getenv()` or `$_ENV` automagically.
+> Autodetect environment type and load variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.
 
 ![](cover.png)
+
+
+
 
 
 ## Installation
@@ -48,7 +51,7 @@ $ cp .env.example .env
 
 ## Usage Example
 
-### Move Database Configuration with *.env*
+### Database Configuration
 1. Edit `database.php` on `application/config/database.php`
 2. Replace this code:
 ```
