@@ -5,13 +5,31 @@
 
 
 ## Installation
-1. Paste all of these files to your root Application.
+1. Paste all of these files to your root CodeIgniter Application.
+2. Enable your Composer Autoload and Hooks on `application/config/config.php`
+3. Set your config.php
+`$config['composer_autoload'] = FALSE;` to `$config['composer_autoload'] = TRUE;`
+`$config['enable_hooks'] = FALSE;` to `$config['enable_hooks'] = TRUE;`
+
+4. Go to your `application` directory and install package.
+```
+cd application && composer install
+```
+
+5. Add this script to your application hooks on `application/config/hooks.php`
+```
+$hook['pre_system'] = function() {
+	$dotenv = Dotenv\Dotenv::create(FCPATH);
+	$dotenv->load();
+};
+```
 
 
 ## Contributing
 
-1. Fork it (<https://github.com/sunuazizrahayu/phpdotenv-for-codeigniter/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add my feature fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
+1. Fork it!
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -am 'Add my feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
