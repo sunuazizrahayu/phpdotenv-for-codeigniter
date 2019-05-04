@@ -5,20 +5,31 @@
 
 
 ## Installation
-1. Paste all of these files to your CodeIgniter Application root.
-2. Add `.env` on your `.gitignore` on CodeIgniter root.
-3. Enable your Composer Autoload and Hooks on `application/config/config.php`
+1. Install Composer
+```
+$ curl -s http://getcomposer.org/installer | php
+```
 
-`$config['composer_autoload'] = FALSE;` to `$config['composer_autoload'] = TRUE;`
+2. Paste all of these files to your CodeIgniter root.
+3. Install package on `application` directory
+```
+$ cd application
+$ composer install
+```
+
+
+
+
+
+## Configuration
+1. Enable your Composer Autoload and Hooks: `application/config/config.php`
 
 `$config['enable_hooks'] = FALSE;` to `$config['enable_hooks'] = TRUE;`
 
-4. Go to your `application` directory and install package.
-```
-cd application && composer install
-```
+`$config['composer_autoload'] = FALSE;` to `$config['composer_autoload'] = TRUE;`
 
-5. Add this script to your application hooks on `application/config/hooks.php`
+
+2. Add this code to your application hooks: `application/config/hooks.php`
 ```
 $hook['pre_system'] = function() {
 	$dotenv = Dotenv\Dotenv::create(FCPATH);
@@ -26,9 +37,43 @@ $hook['pre_system'] = function() {
 };
 ```
 
+3. Copy *.env.example* to *.env*
+```
+$ cp .env.example .env
+```
+
+
+
+
+
+## Usage Example
+
+### Move Database Configuration with *.env*
+1. Edit `database.php` on `application/config/database.php`
+2. Replace this code:
+```
+	'hostname' => 'localhost',
+	'username' => '',
+	'password' => '',
+	'database' => '',
+	'dbdriver' => 'mysqli',
+```
+
+to
+```
+	'hostname' => getenv('DB_HOSTNAME'),
+	'username' => getenv('DB_USERNAME'),
+	'password' => getenv('DB_PASSWORD'),
+	'database' => getenv('DB_DATABASE'),
+	'dbdriver' => getenv('DB_DRIVER'),
+```
+
+
+
+
+
 
 ## Contributing
-
 1. Fork it!
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Make your changes
