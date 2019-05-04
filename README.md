@@ -5,10 +5,12 @@
 
 
 ## Installation
-1. Paste all of these files to your root CodeIgniter Application.
-2. Enable your Composer Autoload and Hooks on `application/config/config.php`
-3. Set your config.php
+1. Paste all of these files to your CodeIgniter Application root.
+2. Add `.env` on your `.gitignore` on CodeIgniter root.
+3. Enable your Composer Autoload and Hooks on `application/config/config.php`
+
 `$config['composer_autoload'] = FALSE;` to `$config['composer_autoload'] = TRUE;`
+
 `$config['enable_hooks'] = FALSE;` to `$config['enable_hooks'] = TRUE;`
 
 4. Go to your `application` directory and install package.
