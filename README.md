@@ -33,14 +33,25 @@ $ composer install
 
 
 2. Add this code to your application hooks: `application/config/hooks.php`
+
 ```
+// Use this code if your .env files on *CodeIgniter ROOT* folder
 $hook['pre_system'] = function() {
 	$dotenv = Dotenv\Dotenv::create(FCPATH);
 	$dotenv->load();
 };
 ```
 
-3. Copy *.env.example* to *.env*
+or
+```
+// Use this code if your .env files on *application* folder
+$hook['pre_system'] = function() {
+	$dotenv = Dotenv\Dotenv::create(APPPATH);
+	$dotenv->load();
+};
+```
+
+3. Create your *.env* files
 ```
 $ cp .env.example .env
 ```
