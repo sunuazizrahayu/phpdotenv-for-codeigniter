@@ -1,10 +1,11 @@
-# PHP dotenv for CodeIgniter
+# PHP DotEnv for CodeIgniter
 > Autodetect environment type and load variables from `.env` to `getenv()` or `$_ENV` automagically.
 
 ![](cover.png)
 
 
 ## Installation
+1. Paste all of these files to your root Application.
 
 
 ## Contributing
